@@ -54,8 +54,8 @@ export default function Dashboard() {
         <div className="flex items-start gap-4">
           <div className="text-primary text-4xl leading-none font-serif">“</div>
           <div className="space-y-3">
-            <p className="text-lg md:text-xl font-medium leading-relaxed text-foreground" dir="rtl" lang="ar">
-              وَلَا تَjْعَلْ يَدَكَ مَغْلُولَةً إِلَىٰ عُنُقِكَ وَلَا تَبْسُطْهَا كُلَّ الْبَسْطِ فَتَقْعُدَ مَلُومًا مَّحْسُورًا
+            <p className="text-lg md:text-2xl font-medium leading-loose text-foreground" dir="rtl" lang="ar">
+              وَلَا تَجْعَلْ يَدَكَ مَغْلُولَةً إِلَىٰ عُنُقِكَ وَلَا تَبْسُطْهَا كُلَّ الْبَسْطِ فَتَقْعُدَ مَلُومًا مَحْسُورًا
             </p>
             <p className="text-base text-muted-foreground italic">
               "Dan janganlah engkau jadikan tanganmu terbelenggu pada lehermu, dan jangan pula engkau terlalu mengulurkannya, karena itu engkau menjadi tercela dan menyesal."
