@@ -2,9 +2,10 @@ import { NavLink, Outlet, Link } from "react-router-dom";
 import { useAuth } from "@/context/AuthContext";
 import { useTheme } from "@/context/ThemeContext";
 import { Button } from "@/components/ui/button";
-import { Moon, Sun, LogOut, LogIn, Wallet, Menu, X } from "lucide-react";
+import { Moon, Sun, LogOut, LogIn, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import logoRohis from "@/assets/logo-rohis.png";
 
 const publicNav = [
   { to: "/", label: "Dashboard" },
@@ -22,13 +23,11 @@ export default function MainLayout() {
     <div className="min-h-screen flex flex-col bg-background">
       <header className="sticky top-0 z-40 border-b bg-card/80 backdrop-blur supports-[backdrop-filter]:bg-card/60">
         <div className="container flex h-16 items-center justify-between gap-4">
-          <Link to="/" className="flex items-center gap-2 font-semibold">
-            <span className="grid h-9 w-9 place-items-center rounded-xl gradient-primary text-primary-foreground shadow-md">
-              <Wallet className="h-5 w-5" />
-            </span>
+          <Link to="/" className="flex items-center gap-3 font-semibold">
+            <img src={logoRohis} alt="Logo ROHIS Al-Hafidh SMKN 1 Semarang" className="h-11 w-11 object-contain drop-shadow-sm" />
             <span className="hidden sm:flex flex-col leading-tight">
-              <span className="text-base">ROHIS Finance</span>
-              <span className="text-[10px] uppercase tracking-wider text-muted-foreground">Manager</span>
+              <span className="text-base">ROHIS Al-Hafidh</span>
+              <span className="text-[10px] uppercase tracking-wider text-muted-foreground">SMKN 1 Semarang · Finance</span>
             </span>
           </Link>
 
@@ -114,7 +113,7 @@ export default function MainLayout() {
       </main>
 
       <footer className="border-t py-6 text-center text-sm text-muted-foreground">
-        © {new Date().getFullYear()} ROHIS Finance Manager — transparansi keuangan organisasi.
+        © {new Date().getFullYear()} ROHIS Al-Hafidh SMKN 1 Semarang — transparansi keuangan organisasi.
       </footer>
     </div>
   );

@@ -37,15 +37,33 @@ export default function Dashboard() {
         <div className="absolute inset-0 gradient-primary opacity-95" />
         <div className="relative p-8 md:p-10 text-primary-foreground flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           <div className="space-y-2 max-w-2xl">
-            <p className="uppercase tracking-widest text-xs opacity-80">ROHIS Finance Manager</p>
+            <p className="uppercase tracking-widest text-xs opacity-80">ROHIS Al-Hafidh · SMKN 1 Semarang</p>
             <h1 className="text-3xl md:text-4xl font-bold leading-tight">Transparansi keuangan organisasi.</h1>
-            <p className="opacity-90">Pantau pemasukan, pengeluaran, dan saldo kas ROHIS secara terbuka — kapan pun, di mana pun.</p>
+            <p className="opacity-90">Pantau pemasukan, pengeluaran, dan saldo kas ROHIS Al-Hafidh secara terbuka — kapan pun, di mana pun.</p>
           </div>
           <div className="flex gap-2">
             <Button variant="secondary" asChild><Link to="/laporan">Lihat Laporan</Link></Button>
             <Button variant="outline" className="bg-transparent text-primary-foreground border-primary-foreground/40 hover:bg-primary-foreground/10 hover:text-primary-foreground" asChild>
               <Link to="/analisis">Analisis</Link>
             </Button>
+          </div>
+        </div>
+      </section>
+
+      <section className="card-elevated p-6 md:p-8 border-l-4 border-l-primary">
+        <div className="flex items-start gap-4">
+          <div className="text-primary text-4xl leading-none font-serif">“</div>
+          <div className="space-y-3">
+            <p className="text-lg md:text-2xl font-medium leading-loose text-foreground" dir="rtl" lang="ar">
+              وَلَا تَجْعَلْ يَدَكَ مَغْلُولَةً إِلَىٰ عُنُقِكَ وَلَا تَبْسُطْهَا كُلَّ الْبَسْطِ فَتَقْعُدَ مَلُومًا مَحْسُورًا
+            </p>
+            <p className="text-base text-muted-foreground italic">
+              "Dan janganlah engkau jadikan tanganmu terbelenggu pada lehermu, dan jangan pula engkau terlalu mengulurkannya, karena itu engkau menjadi tercela dan menyesal."
+            </p>
+            <p className="text-sm font-semibold text-primary">— QS. Al-Isra' (17): 29</p>
+            <p className="text-xs text-muted-foreground pt-2 border-t">
+              Ayat ini menjadi pedoman ROHIS Al-Hafidh dalam mengelola amanah keuangan: tidak kikir, tidak boros, dan selalu seimbang.
+            </p>
           </div>
         </div>
       </section>
