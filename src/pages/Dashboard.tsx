@@ -107,10 +107,31 @@ export default function Dashboard() {
       </section>
 
       <section className="grid gap-4 md:grid-cols-4">
-        <StatCard title="Total Pemasukan" value={formatRupiah(s.totalIn)} icon={<TrendingUp className="h-4 w-4" />} hint={`${data.filter(t=>t.type==='pemasukan').length} transaksi`} />
-        <StatCard title="Total Pengeluaran" value={formatRupiah(s.totalOut)} icon={<TrendingDown className="h-4 w-4" />} hint={`${data.filter(t=>t.type==='pengeluaran').length} transaksi`} />
+        <StatCard title="Total Pemasukan" value={formatRupiah(s.totalIn)} icon={<TrendingUp className="h-4 w-4" />} hint={`${data.filter(t=>t.type==='pemasukan' && t.category!=='Dana Darurat').length} transaksi`} />
+        <StatCard title="Total Pengeluaran" value={formatRupiah(s.totalOut)} icon={<TrendingDown className="h-4 w-4" />} hint={`${data.filter(t=>t.type==='pengeluaran' && t.category!=='Dana Darurat').length} transaksi`} />
         <StatCard title="Saldo Kas" value={formatRupiah(s.balance)} icon={<Wallet className="h-4 w-4" />} hint={s.totalIn > 0 ? `${(s.ratio*100).toFixed(0)}% dari pemasukan tersisa` : '—'} />
         <StatCard title="Status Kas" value={s.status} icon={statusIcon} tone={statusTone} hint={s.insights[0] ?? '—'} />
+      </section>
+
+      <section className="card-elevated p-6 md:p-8 relative overflow-hidden hover-lift border-warning/30">
+        <div className="absolute inset-0 islamic-pattern opacity-30 pointer-events-none" />
+        <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-warning/10 blur-3xl" />
+        <div className="relative">
+          <div className="flex items-center gap-3 mb-5">
+            <span className="grid h-11 w-11 place-items-center rounded-xl bg-warning/15 text-warning">
+              <LifeBuoy className="h-5 w-5" />
+            </span>
+            <div>
+              <h3 className="font-semibold text-lg">Dana Darurat</h3>
+              <p className="text-xs text-muted-foreground">Terpisah dari saldo kas utama — disimpan untuk keperluan mendesak.</p>
+            </div>
+          </div>
+          <div className="grid gap-4 md:grid-cols-3">
+            <StatCard title="Pemasukan Dana Darurat" value={formatRupiah(em.totalIn)} icon={<TrendingUp className="h-4 w-4" />} hint={`${data.filter(t=>t.type==='pemasukan' && t.category==='Dana Darurat').length} transaksi`} />
+            <StatCard title="Pengeluaran Dana Darurat" value={formatRupiah(em.totalOut)} icon={<TrendingDown className="h-4 w-4" />} hint={`${data.filter(t=>t.type==='pengeluaran' && t.category==='Dana Darurat').length} transaksi`} />
+            <StatCard title="Saldo Dana Darurat" value={formatRupiah(em.balance)} icon={<LifeBuoy className="h-4 w-4" />} tone="warning" hint={em.count === 0 ? 'Belum ada catatan' : `${em.count} transaksi tercatat`} />
+          </div>
+        </div>
       </section>
 
       <section className="grid gap-6 lg:grid-cols-3">
