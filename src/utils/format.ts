@@ -7,5 +7,22 @@ export const formatDate = (d: string | Date) =>
 export const formatMonth = (d: string | Date) =>
   new Date(d).toLocaleDateString("id-ID", { month: "short", year: "2-digit" });
 
-export const KATEGORI_PEMASUKAN = ["Iuran Anggota", "Donasi", "Sponsor", "Penjualan", "Lainnya"];
-export const KATEGORI_PENGELUARAN = ["Konsumsi", "Perlengkapan", "Transportasi", "Honor Pemateri", "Dokumentasi", "Lainnya"];
+export const KATEGORI_PEMASUKAN = [
+  "Iuran Anggota",
+  "Donasi",
+  "Sponsor",
+  "Penjualan",
+  "Dana Darurat",
+  "Dana Sisa Event",
+  "Lainnya",
+];
+export const KATEGORI_PENGELUARAN = [
+  "Konsumsi",
+  "Perlengkapan",
+  "Transportasi",
+  "Honor Pemateri",
+  "Dokumentasi",
+  "Dana Darurat",
+  "Dana Sisa Event",
+  "Lainnya",
+];
