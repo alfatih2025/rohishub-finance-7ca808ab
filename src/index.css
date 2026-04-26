@@ -129,4 +129,32 @@
   .gradient-soft {
     background: var(--gradient-soft);
   }
+  .islamic-pattern {
+    background-image:
+      radial-gradient(circle at 25% 25%, hsl(var(--primary) / 0.08) 2px, transparent 3px),
+      radial-gradient(circle at 75% 75%, hsl(var(--primary) / 0.06) 2px, transparent 3px);
+    background-size: 32px 32px;
+  }
+  .ornament-divider {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: hsl(var(--primary));
+  }
+  .ornament-divider::before,
+  .ornament-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.4), transparent);
+  }
+}
+
+@layer utilities {
+  .transition-smooth {
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .hover-lift {
+    @apply transition-smooth hover:-translate-y-1 hover:shadow-lg;
+  }
 }
