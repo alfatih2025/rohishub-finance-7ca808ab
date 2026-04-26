@@ -1,5 +1,27 @@
 import { Transaction } from "@/services/transactions";
 
+export const EMERGENCY_CATEGORY = "Dana Darurat";
+
+export const isEmergency = (t: Transaction) => t.category === EMERGENCY_CATEGORY;
+export const splitEmergency = (txs: Transaction[]) => ({
+  regular: txs.filter(t => !isEmergency(t)),
+  emergency: txs.filter(t => isEmergency(t)),
+});
+
+export interface EmergencySummary {
+  totalIn: number;
+  totalOut: number;
+  balance: number;
+  count: number;
+}
+
+export function summarizeEmergency(txs: Transaction[]): EmergencySummary {
+  const em = txs.filter(isEmergency);
+  const totalIn = em.filter(t => t.type === "pemasukan").reduce((a, b) => a + Number(b.amount), 0);
+  const totalOut = em.filter(t => t.type === "pengeluaran").reduce((a, b) => a + Number(b.amount), 0);
+  return { totalIn, totalOut, balance: totalIn - totalOut, count: em.length };
+}
+
 export interface Summary {
   totalIn: number;
   totalOut: number;
@@ -12,7 +34,8 @@ export interface Summary {
   insights: string[];
 }
 
-export function summarize(txs: Transaction[]): Summary {
+export function summarize(input: Transaction[]): Summary {
+  const txs = input.filter(t => !isEmergency(t));
   const totalIn = txs.filter(t => t.type === "pemasukan").reduce((a, b) => a + Number(b.amount), 0);
   const totalOut = txs.filter(t => t.type === "pengeluaran").reduce((a, b) => a + Number(b.amount), 0);
   const balance = totalIn - totalOut;
@@ -61,7 +84,8 @@ export function summarize(txs: Transaction[]): Summary {
   return { totalIn, totalOut, balance, ratio, status, topExpenseCategory, topExpenseAmount, monthlyTrendPct, insights };
 }
 
-export function monthlySeries(txs: Transaction[]) {
+export function monthlySeries(input: Transaction[]) {
+  const txs = input.filter(t => !isEmergency(t));
   const map = new Map<string, { month: string; pemasukan: number; pengeluaran: number }>();
   txs.forEach(t => {
     const key = t.date.slice(0, 7);
@@ -73,7 +97,8 @@ export function monthlySeries(txs: Transaction[]) {
   return Array.from(map.values()).sort((a, b) => a.month.localeCompare(b.month));
 }
 
-export function expenseByCategory(txs: Transaction[]) {
+export function expenseByCategory(input: Transaction[]) {
+  const txs = input.filter(t => !isEmergency(t));
   const map = new Map<string, number>();
   txs.filter(t => t.type === "pengeluaran").forEach(t => {
     map.set(t.category, (map.get(t.category) ?? 0) + Number(t.amount));
