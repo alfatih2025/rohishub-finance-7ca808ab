@@ -1,8 +1,8 @@
 import { useTransactions } from "@/hooks/useTransactions";
-import { summarize, monthlySeries, expenseByCategory } from "@/utils/analytics";
+import { summarize, monthlySeries, expenseByCategory, summarizeEmergency } from "@/utils/analytics";
 import StatCard from "@/components/StatCard";
 import { formatRupiah, formatMonth } from "@/utils/format";
-import { TrendingUp, TrendingDown, Wallet, ShieldCheck, AlertTriangle, AlertOctagon } from "lucide-react";
+import { TrendingUp, TrendingDown, Wallet, ShieldCheck, AlertTriangle, AlertOctagon, LifeBuoy } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, BarChart, Bar, Legend, PieChart, Pie, Cell } from "recharts";
 import { Link } from "react-router-dom";
@@ -13,6 +13,7 @@ const COLORS = ["hsl(152 60% 40%)", "hsl(38 92% 50%)", "hsl(210 80% 55%)", "hsl(
 export default function Dashboard() {
   const { data, loading } = useTransactions();
   const s = summarize(data);
+  const em = summarizeEmergency(data);
   const series = monthlySeries(data).map(m => ({ ...m, label: formatMonth(m.month + "-01") }));
   const pie = expenseByCategory(data);
 
