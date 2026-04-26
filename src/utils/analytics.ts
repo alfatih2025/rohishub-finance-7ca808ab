@@ -84,7 +84,8 @@ export function summarize(input: Transaction[]): Summary {
   return { totalIn, totalOut, balance, ratio, status, topExpenseCategory, topExpenseAmount, monthlyTrendPct, insights };
 }
 
-export function monthlySeries(txs: Transaction[]) {
+export function monthlySeries(input: Transaction[]) {
+  const txs = input.filter(t => !isEmergency(t));
   const map = new Map<string, { month: string; pemasukan: number; pengeluaran: number }>();
   txs.forEach(t => {
     const key = t.date.slice(0, 7);
@@ -96,7 +97,8 @@ export function monthlySeries(txs: Transaction[]) {
   return Array.from(map.values()).sort((a, b) => a.month.localeCompare(b.month));
 }
 
-export function expenseByCategory(txs: Transaction[]) {
+export function expenseByCategory(input: Transaction[]) {
+  const txs = input.filter(t => !isEmergency(t));
   const map = new Map<string, number>();
   txs.filter(t => t.type === "pengeluaran").forEach(t => {
     map.set(t.category, (map.get(t.category) ?? 0) + Number(t.amount));
