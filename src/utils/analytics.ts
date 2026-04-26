@@ -1,5 +1,27 @@
 import { Transaction } from "@/services/transactions";
 
+export const EMERGENCY_CATEGORY = "Dana Darurat";
+
+export const isEmergency = (t: Transaction) => t.category === EMERGENCY_CATEGORY;
+export const splitEmergency = (txs: Transaction[]) => ({
+  regular: txs.filter(t => !isEmergency(t)),
+  emergency: txs.filter(t => isEmergency(t)),
+});
+
+export interface EmergencySummary {
+  totalIn: number;
+  totalOut: number;
+  balance: number;
+  count: number;
+}
+
+export function summarizeEmergency(txs: Transaction[]): EmergencySummary {
+  const em = txs.filter(isEmergency);
+  const totalIn = em.filter(t => t.type === "pemasukan").reduce((a, b) => a + Number(b.amount), 0);
+  const totalOut = em.filter(t => t.type === "pengeluaran").reduce((a, b) => a + Number(b.amount), 0);
+  return { totalIn, totalOut, balance: totalIn - totalOut, count: em.length };
+}
+
 export interface Summary {
   totalIn: number;
   totalOut: number;
