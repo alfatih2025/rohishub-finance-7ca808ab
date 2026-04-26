@@ -108,7 +108,7 @@ export default function MainLayout() {
         )}
       </header>
 
-      <main className="flex-1 container py-8 animate-fade-in">
+      <main className="flex-1 container py-8 animate-fade-in-slow">
         <Outlet />
       </main>
 

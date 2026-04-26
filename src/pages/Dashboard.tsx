@@ -32,9 +32,18 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="space-y-8">
-      <section className="card-elevated overflow-hidden relative">
+    <div className="space-y-8 animate-fade-in-slow">
+      <section className="card-elevated overflow-hidden relative hover-lift">
         <div className="absolute inset-0 gradient-primary opacity-95" />
+        <div className="absolute inset-0 islamic-pattern opacity-30" />
+        <svg className="absolute -right-10 -top-10 h-64 w-64 text-primary-foreground/10 animate-spin-slow" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="0.5">
+          <circle cx="50" cy="50" r="48" />
+          <circle cx="50" cy="50" r="36" />
+          <circle cx="50" cy="50" r="24" />
+          <path d="M50 2 L50 98 M2 50 L98 50 M14.6 14.6 L85.4 85.4 M85.4 14.6 L14.6 85.4" />
+          <path d="M50 10 L58 30 L78 30 L62 42 L68 62 L50 50 L32 62 L38 42 L22 30 L42 30 Z" />
+        </svg>
+        <div className="absolute -left-8 -bottom-8 h-48 w-48 rounded-full bg-primary-foreground/10 blur-2xl animate-glow-pulse" />
         <div className="relative p-8 md:p-10 text-primary-foreground flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           <div className="space-y-2 max-w-2xl">
             <p className="uppercase tracking-widest text-xs opacity-80">ROHIS Al-Hafidh · SMKN 1 Semarang</p>
@@ -42,29 +51,57 @@ export default function Dashboard() {
             <p className="opacity-90">Pantau pemasukan, pengeluaran, dan saldo kas ROHIS Al-Hafidh secara terbuka — kapan pun, di mana pun.</p>
           </div>
           <div className="flex gap-2">
-            <Button variant="secondary" asChild><Link to="/laporan">Lihat Laporan</Link></Button>
-            <Button variant="outline" className="bg-transparent text-primary-foreground border-primary-foreground/40 hover:bg-primary-foreground/10 hover:text-primary-foreground" asChild>
+            <Button variant="secondary" asChild className="transition-smooth hover:scale-105"><Link to="/laporan">Lihat Laporan</Link></Button>
+            <Button variant="outline" className="bg-transparent text-primary-foreground border-primary-foreground/40 hover:bg-primary-foreground/10 hover:text-primary-foreground transition-smooth hover:scale-105" asChild>
               <Link to="/analisis">Analisis</Link>
             </Button>
           </div>
         </div>
       </section>
 
-      <section className="card-elevated p-6 md:p-8 border-l-4 border-l-primary">
-        <div className="flex items-start gap-4">
-          <div className="text-primary text-4xl leading-none font-serif">“</div>
-          <div className="space-y-3">
-            <p className="text-lg md:text-2xl font-medium leading-loose text-foreground" dir="rtl" lang="ar">
-              وَلَا تَجْعَلْ يَدَكَ مَغْلُولَةً إِلَىٰ عُنُقِكَ وَلَا تَبْسُطْهَا كُلَّ الْبَسْطِ فَتَقْعُدَ مَلُومًا مَحْسُورًا
-            </p>
-            <p className="text-base text-muted-foreground italic">
-              "Dan janganlah engkau jadikan tanganmu terbelenggu pada lehermu, dan jangan pula engkau terlalu mengulurkannya, karena itu engkau menjadi tercela dan menyesal."
-            </p>
-            <p className="text-sm font-semibold text-primary">— QS. Al-Isra' (17): 29</p>
-            <p className="text-xs text-muted-foreground pt-2 border-t">
-              Ayat ini menjadi pedoman ROHIS Al-Hafidh dalam mengelola amanah keuangan: tidak kikir, tidak boros, dan selalu seimbang.
-            </p>
+      <section className="card-elevated p-6 md:p-10 relative overflow-hidden hover-lift">
+        <div className="absolute inset-0 islamic-pattern opacity-40 pointer-events-none" />
+        <svg className="absolute top-3 left-3 h-10 w-10 text-primary/30" viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1">
+          <path d="M2 20 Q2 2, 20 2" />
+          <path d="M8 20 Q8 8, 20 8" />
+          <circle cx="20" cy="20" r="1.5" fill="currentColor" />
+        </svg>
+        <svg className="absolute top-3 right-3 h-10 w-10 text-primary/30 rotate-90" viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1">
+          <path d="M2 20 Q2 2, 20 2" />
+          <path d="M8 20 Q8 8, 20 8" />
+          <circle cx="20" cy="20" r="1.5" fill="currentColor" />
+        </svg>
+        <svg className="absolute bottom-3 left-3 h-10 w-10 text-primary/30 -rotate-90" viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1">
+          <path d="M2 20 Q2 2, 20 2" />
+          <path d="M8 20 Q8 8, 20 8" />
+          <circle cx="20" cy="20" r="1.5" fill="currentColor" />
+        </svg>
+        <svg className="absolute bottom-3 right-3 h-10 w-10 text-primary/30 rotate-180" viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1">
+          <path d="M2 20 Q2 2, 20 2" />
+          <path d="M8 20 Q8 8, 20 8" />
+          <circle cx="20" cy="20" r="1.5" fill="currentColor" />
+        </svg>
+
+        <div className="relative space-y-5 text-center max-w-3xl mx-auto py-2">
+          <div className="ornament-divider text-xs">
+            <span className="font-serif text-lg">۞</span>
           </div>
+
+          <p className="text-base md:text-lg text-foreground leading-loose italic px-2">
+            "Allah akan memberi rahmat bagi hambanya yang mencari rizki yang halal dan menyedekahkan dengan kesengajaan, mendahulukan kebutuhan yang lebih penting, pada hari di mana ia dalam keadaan fakir dan memiliki hajat."
+          </p>
+
+          <p className="text-sm font-semibold text-primary tracking-wide">
+            — HR. Ahmad dan Muslim
+          </p>
+
+          <div className="ornament-divider text-xs">
+            <span className="font-serif text-lg">۞</span>
+          </div>
+
+          <p className="text-xs text-muted-foreground pt-1 max-w-xl mx-auto">
+            Hadits ini menjadi pedoman ROHIS Al-Hafidh dalam mengelola amanah keuangan: mencari yang halal, menyedekahkan dengan niat tulus, dan mendahulukan yang lebih penting.
+          </p>
         </div>
       </section>
 
