@@ -34,7 +34,8 @@ export interface Summary {
   insights: string[];
 }
 
-export function summarize(txs: Transaction[]): Summary {
+export function summarize(input: Transaction[]): Summary {
+  const txs = input.filter(t => !isEmergency(t));
   const totalIn = txs.filter(t => t.type === "pemasukan").reduce((a, b) => a + Number(b.amount), 0);
   const totalOut = txs.filter(t => t.type === "pengeluaran").reduce((a, b) => a + Number(b.amount), 0);
   const balance = totalIn - totalOut;
